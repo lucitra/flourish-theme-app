@@ -1,6 +1,6 @@
 {
   "settings": {
-    "targetUrl": "https://example.com/webhook",
+    "targetUrl": "https://flourish.com/webhook",
     "maxConcurrentRequests": 10
   },
   "subscriptions": {

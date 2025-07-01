@@ -1,8 +1,8 @@
 {
-  "name": "Get started with public apps",
-  "uid": "get-started-public-app",
-  "description": "An example to demonstrate how to build a public app with developer projects.",
-  "allowedUrls": ["https://api.example.com"],
+  "name": "Flourish Theme",
+  "uid": "flourish-theme",
+  "description": "Flourish Theme - A HubSpot public app for managing themes.",
+  "allowedUrls": ["https://api.lucitra.com"],
   "auth": {
     "redirectUrls": ["http://localhost:3000/oauth-callback"],
     "requiredScopes": ["crm.objects.contacts.read", "crm.objects.contacts.write"],
@@ -10,16 +10,16 @@
     "conditionallyRequiredScopes": []
   },
   "support": {
-    "supportEmail": "support@example.com",
-    "documentationUrl": "https://example.com/docs",
-    "supportUrl": "https://example.com/support",
+    "supportEmail": "support@lucitra.ai",
+    "documentationUrl": "https://lucitra.ai/docs",
+    "supportUrl": "https://lucitra.ai/support",
     "supportPhone": "+18005555555"
   },
   "extensions": {
     "crm": {
       "cards": [
         {
-          "file": "./extensions/example-card.json"
+          "file": "./extensions/flourish-theme-card.json"
         }
       ]
     }
