@@ -1,6 +1,6 @@
 {
   "settings": {
-    "targetUrl": "https://flourish.com/webhook",
+    "targetUrl": "https://api.lucitra.com/webhook",
     "maxConcurrentRequests": 10
   },
   "subscriptions": {
