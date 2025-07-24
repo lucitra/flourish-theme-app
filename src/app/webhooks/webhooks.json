@@ -1,38 +1,40 @@
 {
   "settings": {
-    "targetUrl": "https://api.lucitra.com/webhook",
+    "targetUrl": "https://lucitra-webhook-server-dev-910196537412.us-central1.run.app/webhook",
     "maxConcurrentRequests": 10
   },
   "subscriptions": {
-    "crmObjects": [
+    "crmObjects": [],
+    "legacyCrmObjects": [
       {
-        "subscriptionType": "object.propertyChange",
-        "objectName": "contact",
-        "propertyName": "firstname",
+        "subscriptionType": "contact.creation",
         "active": true
       },
       {
-        "subscriptionType": "object.creation",
-        "objectName": "contact",
+        "subscriptionType": "contact.propertyChange",
+        "propertyName": "email",
         "active": true
-      }
-    ],
-    "legacyCrmObjects": [
+      },
+      {
+        "subscriptionType": "contact.propertyChange",
+        "propertyName": "firstname",
+        "active": true
+      },
       {
         "subscriptionType": "contact.propertyChange",
         "propertyName": "lastname",
         "active": true
       },
       {
-        "subscriptionType": "contact.deletion",
+        "subscriptionType": "deal.creation",
+        "active": true
+      },
+      {
+        "subscriptionType": "deal.propertyChange",
+        "propertyName": "dealstage",
         "active": true
       }
     ],
-    "hubEvents": [
-      {
-        "subscriptionType": "contact.privacyDeletion",
-        "active": true
-      }
-    ]
+    "hubEvents": []
   }
 }

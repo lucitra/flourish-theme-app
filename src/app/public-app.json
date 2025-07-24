@@ -5,7 +5,7 @@
   "allowedUrls": ["https://api.lucitra.com"],
   "auth": {
     "redirectUrls": ["http://localhost:3000/oauth-callback"],
-    "requiredScopes": ["crm.objects.contacts.read", "crm.objects.contacts.write"],
+    "requiredScopes": ["crm.objects.contacts.read", "crm.objects.contacts.write", "crm.objects.deals.read"],
     "optionalScopes": [],
     "conditionallyRequiredScopes": []
   },
