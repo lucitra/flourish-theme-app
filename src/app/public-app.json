@@ -1,9 +1,10 @@
 {
-  "name": "Flourish Theme",
+  "name": "Flourish Theme - Dev",
   "uid": "flourish-theme",
-  "description": "Flourish Theme - A HubSpot public app for managing themes.",
+  "description": "Flourish Theme - A HubSpot public app for managing themes. [DEV]",
   "allowedUrls": [
-    "https://api.lucitra.com"
+    "https://api.lucitra.com",
+    "https://dev-api.lucitra.com"
   ],
   "auth": {
     "redirectUrls": [

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-// Script to update webhook URLs based on environment
+// Script to update webhook URLs and app configuration based on environment
 const fs = require('fs');
 const path = require('path');
 
@@ -11,52 +11,66 @@ if (!environment || !['dev', 'staging', 'prod'].includes(environment)) {
   process.exit(1);
 }
 
-// Environment-specific webhook URLs
-const webhookUrls = {
-  dev: 'https://lucitra-webhook-server-dev-ygq5jwikta-uc.a.run.app/webhook',
-  staging: 'https://lucitra-webhook-server-staging-ygq5jwikta-uc.a.run.app/webhook',
-  prod: 'https://lucitra-webhook-server-prod-ygq5jwikta-uc.a.run.app/webhook'
+// Environment-specific configurations
+const configs = {
+  dev: {
+    name: 'Flourish Theme - Dev',
+    webhookUrl: 'https://lucitra-webhook-server-dev-ygq5jwikta-uc.a.run.app/webhook',
+    oauthUrl: 'https://lucitra-oauth-server-dev-ygq5jwikta-uc.a.run.app/oauth-callback',
+    allowedUrls: ['https://api.lucitra.com', 'https://dev-api.lucitra.com']
+  },
+  staging: {
+    name: 'Flourish Theme - Staging',
+    webhookUrl: 'https://lucitra-webhook-server-staging-ygq5jwikta-uc.a.run.app/webhook',
+    oauthUrl: 'https://lucitra-oauth-server-staging-ygq5jwikta-uc.a.run.app/oauth-callback',
+    allowedUrls: ['https://api.lucitra.com', 'https://staging-api.lucitra.com']
+  },
+  prod: {
+    name: 'Flourish Theme',
+    webhookUrl: 'https://lucitra-webhook-server-prod-ygq5jwikta-uc.a.run.app/webhook',
+    oauthUrl: 'https://lucitra-oauth-server-prod-ygq5jwikta-uc.a.run.app/oauth-callback',
+    allowedUrls: ['https://api.lucitra.com']
+  }
 };
 
-// Environment-specific OAuth redirect URLs
-const oauthUrls = {
-  dev: 'https://lucitra-oauth-server-dev-ygq5jwikta-uc.a.run.app/oauth-callback',
-  staging: 'https://lucitra-oauth-server-staging-ygq5jwikta-uc.a.run.app/oauth-callback',
-  prod: 'https://lucitra-oauth-server-prod-ygq5jwikta-uc.a.run.app/oauth-callback'
-};
+const config = configs[environment];
 
 // Update webhooks.json
 const webhooksPath = path.join(__dirname, '../src/app/webhooks/webhooks.json');
 const webhooksConfig = JSON.parse(fs.readFileSync(webhooksPath, 'utf8'));
-webhooksConfig.settings.targetUrl = webhookUrls[environment];
+webhooksConfig.settings.targetUrl = config.webhookUrl;
 fs.writeFileSync(webhooksPath, JSON.stringify(webhooksConfig, null, 2) + '\n');
 
 // Update public-app.json
 const publicAppPath = path.join(__dirname, '../src/app/public-app.json');
 const publicAppConfig = JSON.parse(fs.readFileSync(publicAppPath, 'utf8'));
 
-// Keep localhost and add the environment-specific URL
+// Update app name
+publicAppConfig.name = config.name;
+
+// Update allowed URLs
+publicAppConfig.allowedUrls = config.allowedUrls;
+
+// Update OAuth redirect URLs (keep localhost for all environments)
 publicAppConfig.auth.redirectUrls = [
   'http://localhost:3000/oauth-callback',
-  oauthUrls[environment]
+  config.oauthUrl
 ];
 
-// Remove any other environment URLs
-Object.values(oauthUrls).forEach(url => {
-  if (url !== oauthUrls[environment]) {
-    const index = publicAppConfig.auth.redirectUrls.indexOf(url);
-    if (index > -1) {
-      publicAppConfig.auth.redirectUrls.splice(index, 1);
-    }
-  }
-});
+// Add environment indicator to description (only for non-prod)
+if (environment === 'prod') {
+  publicAppConfig.description = 'Flourish Theme - A HubSpot public app for managing themes.';
+} else {
+  publicAppConfig.description = `Flourish Theme - A HubSpot public app for managing themes. [${environment.toUpperCase()}]`;
+}
 
 fs.writeFileSync(publicAppPath, JSON.stringify(publicAppConfig, null, 2) + '\n');
 
 console.log(`✅ Updated configuration for ${environment} environment:`);
-console.log(`   Webhook URL: ${webhookUrls[environment]}`);
-console.log(`   OAuth URL: ${oauthUrls[environment]}`);
+console.log(`   App Name: ${config.name}`);
+console.log(`   Webhook URL: ${config.webhookUrl}`);
+console.log(`   OAuth URL: ${config.oauthUrl}`);
 console.log('\n📝 Next steps:');
-console.log(`   1. Commit these changes: git add -A && git commit -m "chore: update URLs for ${environment} environment"`);
+console.log(`   1. Commit these changes: git add -A && git commit -m "chore: update configuration for ${environment} environment"`);
 console.log(`   2. Push to branch: git push origin ${environment === 'dev' ? 'develop' : environment === 'prod' ? 'main' : 'staging'}`);
-console.log(`   3. Deploy to HubSpot: hs project upload && hs project deploy`);
+console.log(`   3. HubSpot will automatically deploy via GitHub integration`);
