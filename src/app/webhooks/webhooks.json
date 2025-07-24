@@ -1,6 +1,6 @@
 {
   "settings": {
-    "targetUrl": "https://lucitra-webhook-server-dev-910196537412.us-central1.run.app/webhook",
+    "targetUrl": "https://lucitra-webhook-server-dev-ygq5jwikta-uc.a.run.app/webhook",
     "maxConcurrentRequests": 10
   },
   "subscriptions": {

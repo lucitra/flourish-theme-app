@@ -2,10 +2,19 @@
   "name": "Flourish Theme",
   "uid": "flourish-theme",
   "description": "Flourish Theme - A HubSpot public app for managing themes.",
-  "allowedUrls": ["https://api.lucitra.com"],
+  "allowedUrls": [
+    "https://api.lucitra.com"
+  ],
   "auth": {
-    "redirectUrls": ["http://localhost:3000/oauth-callback"],
-    "requiredScopes": ["crm.objects.contacts.read", "crm.objects.contacts.write", "crm.objects.deals.read"],
+    "redirectUrls": [
+      "http://localhost:3000/oauth-callback",
+      "https://lucitra-oauth-server-dev-ygq5jwikta-uc.a.run.app/oauth-callback"
+    ],
+    "requiredScopes": [
+      "crm.objects.contacts.read",
+      "crm.objects.contacts.write",
+      "crm.objects.deals.read"
+    ],
     "optionalScopes": [],
     "conditionallyRequiredScopes": []
   },
