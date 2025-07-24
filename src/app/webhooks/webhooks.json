@@ -30,10 +30,6 @@
         "active": true
       },
       {
-        "subscriptionType": "contact.privacyDeletion",
-        "active": true
-      },
-      {
         "subscriptionType": "deal.creation",
         "active": true
       },
