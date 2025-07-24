@@ -3,8 +3,8 @@
   "uid": "flourish-theme",
   "description": "Flourish Theme - A HubSpot public app for managing themes. [DEV]",
   "allowedUrls": [
-    "https://api.lucitra.com",
-    "https://dev-api.lucitra.com"
+    "https://lucitra-oauth-server-dev-ygq5jwikta-uc.a.run.app",
+    "https://lucitra-webhook-server-dev-ygq5jwikta-uc.a.run.app"
   ],
   "auth": {
     "redirectUrls": [

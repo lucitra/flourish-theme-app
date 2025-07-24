@@ -17,19 +17,28 @@ const configs = {
     name: 'Flourish Theme - Dev',
     webhookUrl: 'https://lucitra-webhook-server-dev-ygq5jwikta-uc.a.run.app/webhook',
     oauthUrl: 'https://lucitra-oauth-server-dev-ygq5jwikta-uc.a.run.app/oauth-callback',
-    allowedUrls: ['https://api.lucitra.com', 'https://dev-api.lucitra.com']
+    allowedUrls: [
+      'https://lucitra-oauth-server-dev-ygq5jwikta-uc.a.run.app',
+      'https://lucitra-webhook-server-dev-ygq5jwikta-uc.a.run.app'
+    ]
   },
   staging: {
     name: 'Flourish Theme - Staging',
     webhookUrl: 'https://lucitra-webhook-server-staging-ygq5jwikta-uc.a.run.app/webhook',
     oauthUrl: 'https://lucitra-oauth-server-staging-ygq5jwikta-uc.a.run.app/oauth-callback',
-    allowedUrls: ['https://api.lucitra.com', 'https://staging-api.lucitra.com']
+    allowedUrls: [
+      'https://lucitra-oauth-server-staging-ygq5jwikta-uc.a.run.app',
+      'https://lucitra-webhook-server-staging-ygq5jwikta-uc.a.run.app'
+    ]
   },
   prod: {
     name: 'Flourish Theme',
     webhookUrl: 'https://lucitra-webhook-server-prod-ygq5jwikta-uc.a.run.app/webhook',
     oauthUrl: 'https://lucitra-oauth-server-prod-ygq5jwikta-uc.a.run.app/oauth-callback',
-    allowedUrls: ['https://api.lucitra.com']
+    allowedUrls: [
+      'https://lucitra-oauth-server-prod-ygq5jwikta-uc.a.run.app',
+      'https://lucitra-webhook-server-prod-ygq5jwikta-uc.a.run.app'
+    ]
   }
 };
 
