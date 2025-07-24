@@ -1,0 +1,10 @@
+{
+  "name": "flourish-theme-app",
+  "version": "1.0.0",
+  "description": "HubSpot app for managing themes",
+  "scripts": {
+    "update-env": "node scripts/update-environment.js",
+    "deploy": "./scripts/deploy-environment.sh"
+  },
+  "private": true
+}
