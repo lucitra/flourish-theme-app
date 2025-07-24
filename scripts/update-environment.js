@@ -60,11 +60,8 @@ publicAppConfig.name = config.name;
 // Update allowed URLs
 publicAppConfig.allowedUrls = config.allowedUrls;
 
-// Update OAuth redirect URLs (keep localhost for all environments)
-publicAppConfig.auth.redirectUrls = [
-  'http://localhost:3000/oauth-callback',
-  config.oauthUrl
-];
+// Update OAuth redirect URLs
+publicAppConfig.auth.redirectUrls = [config.oauthUrl];
 
 // Add environment indicator to description (only for non-prod)
 if (environment === 'prod') {

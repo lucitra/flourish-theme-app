@@ -8,7 +8,6 @@
   ],
   "auth": {
     "redirectUrls": [
-      "http://localhost:3000/oauth-callback",
       "https://lucitra-oauth-server-dev-ygq5jwikta-uc.a.run.app/oauth-callback"
     ],
     "requiredScopes": [
@@ -23,7 +22,7 @@
     "supportEmail": "support@lucitra.ai",
     "documentationUrl": "https://lucitra.ai/docs",
     "supportUrl": "https://lucitra.ai/support",
-    "supportPhone": "+18005555555"
+    "supportPhone": "+16176934050"
   },
   "extensions": {
     "crm": {
